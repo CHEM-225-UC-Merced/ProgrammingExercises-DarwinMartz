@@ -72,17 +72,20 @@ Program prgm_01_03
     !
           implicit none
           real,dimension(3,3),intent(in)::matrix
+          real,dimension(3,3)::roundedMatrix
           integer::i
+    !     Round matrix to 1 decimal place.
+          roundedMatrix = Nint(matrix*10.0)/10.0
     !
     !     Format statements.
     !
-     1000 format(3(2x,f5.1))
+     1000 format(3(2x,f6.1))
     !
     !     Print matrix with proper formating.
     !
           write(*,*)' Printing Matrix'
           do i = 1,3
-            write(*,1000) matrix(1,i),matrix(2,i),matrix(3,i)
+            write(*,1000) roundedMatrix(i,1),roundedMatrix(i,2),roundedMatrix(i,3)
           endDo
     !
     !
