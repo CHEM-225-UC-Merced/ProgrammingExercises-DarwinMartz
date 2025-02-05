@@ -56,7 +56,7 @@
 !
       write(*,*)' Printing Matrix'
       do i = 1,3
-        write(*,1000) matrix(i,1),matrix(i,2),matrix(i,3)
+        write(*,1000) matrix(1,i),matrix(2,i),matrix(3,i)
       endDo
 !
 !
