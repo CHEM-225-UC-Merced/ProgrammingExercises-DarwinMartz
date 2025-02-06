@@ -85,7 +85,7 @@ Program prgm_01_03
     !
           write(*,*)' Printing Matrix'
           do i = 1,3
-            write(*,1000) roundedMatrix(i,1),roundedMatrix(i,2),roundedMatrix(i,3)
+            write(*,1000) roundedMatrix(1,i),roundedMatrix(2,i),roundedMatrix(3,i)
           endDo
     !
     !
