@@ -26,7 +26,7 @@
       push(@scores,"PASS");
     }
 #   1-2.
-    system("printf \"input_01_01.txt\\ninput_01_02.txt\\n" | ./prgm_01_03.exe > .outfiles/out_01_03.out");
+    system("printf \"input_01_01.txt\\ninput_01_02.txt\\n\" | ./prgm_01_03.exe > .outfiles/out_01_03.out");
     $temp = `diff .outfiles/out_01_03.out .outfiles/out_01_03.txt`;
     if($temp){
       push(@scores,"**FAIL**");
