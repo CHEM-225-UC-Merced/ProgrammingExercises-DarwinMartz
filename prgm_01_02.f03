@@ -16,10 +16,10 @@ Program prgm_01_02
     !
     !     Start by asking the user for the name of the data file.
     !
-          write(*,*)' What is the name of the input data file?'
+          write(*,*)' What is the name of the first  input data file?'
           read(*,*) fileNameA
     !
-          write(*,*)' What is the name of the input data file?'
+          write(*,*)' What is the name of the second input data file?'
           read(*,*) fileNameB
     !
     !     Open the data file and read matrixInA from that file.
@@ -73,7 +73,7 @@ Program prgm_01_02
     !
           write(*,*)' Printing Matrix'
           do i = 1,3
-            write(*,1000) matrix(1,i),matrix(2,i),matrix(3,i)
+            write(*,1000) matrix(i,1),matrix(i,2),matrix(i,3)
           endDo
     !
     !
