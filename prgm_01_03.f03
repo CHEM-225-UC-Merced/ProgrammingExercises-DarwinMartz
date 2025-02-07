@@ -17,7 +17,7 @@ Program prgm_01_03
     !
     !     Start by asking the user for the name of the data file.
     !
-          write(*,*)' What is the name of the first input data file?'
+          write(*,*)' What is the name of the first  input data file?'
           read(*,*) fileNameA
     !
           write(*,*)' What is the name of the second input data file?'
