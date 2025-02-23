@@ -3,6 +3,9 @@
 !     This program reads a 3x3 matrix from a user-provided input file. After the
 !     file is opened and read, it is closed and then printed.
 !
+!     Darwin Martinez, 2025
+!     University of California, Merced.
+!     dmartinez347@ucmerced.edu
 !
       implicit none
       integer,parameter::inFileUnitA=10
@@ -49,11 +52,12 @@
 !
  1000 format(3(2x,f5.1))
 !
-!     Do the printing job.
+!     Print matrix with proper formating.
 !
       write(*,*)' Printing Matrix'
-!
-      ADD CODE HERE
+      do i = 1,3
+        write(*,1000) matrix(i,1),matrix(i,2),matrix(i,3)
+      endDo
 !
 !
       return
