@@ -31,6 +31,11 @@
       Allocate(Array_Input((NDim*(NDim+1))/2),Matrix(NDim,NDim))
 !
 ! *************************************************************************
+
+      do i=1,(NDim*(NDim+1))/2
+            Read(IIn,*) Array_Input(i)
+          endDo
+
 ! WRITE CODE HERE TO READ THE ARRAY ELEMENTS FROM THE INPUT FILE.
 ! *************************************************************************
 !
@@ -66,6 +71,15 @@
 !
 !
 ! *************************************************************************
+
+      k = 1
+      do i=1,N
+        do j=i,N
+          AMatOut(j,i) = ArrayIn(k)
+          AMatOut(i,j) = AMatOut(j,i)
+          k = k + 1
+        endDo
+      endDo
 ! WRITE CODE HERE TO READ THE ARRAY ELEMENTS FROM THE INPUT FILE.
 ! *************************************************************************
 !
@@ -93,9 +107,45 @@
 !
 !
 ! *************************************************************************
+      
+      k = 1
+      do i=1,N
+        do j=1,i
+          AMatOut(j,i) = ArrayIn(k)
+          AMatOut(i,j) = AMatOut(j,i)
+          k = k + 1
+        endDo
+      endDo
 ! WRITE CODE HERE TO READ THE ARRAY ELEMENTS FROM THE INPUT FILE.
 ! *************************************************************************
 !
 !
       Return
       End Subroutine SymmetricPacked2Matrix_UpperPac
+
+      Subroutine Print_Matrix_Full_Real(Matrix,M,N)
+!
+!     This subroutine prints the M-by-N matrix, Matrix, to the screen.
+!
+      Implicit None
+      Integer,Intent(In)::M,N
+      Real,Dimension(M,N),Intent(In)::Matrix
+!      
+!     Local variables
+      Integer,Parameter::IOut=6,NColumns=5
+      Integer::i,j,IFirst,ILast
+!
+1000 Format(1x,A)
+2000 Format(5x,5(7x,I7))
+2010 Format(1x,I7,5F14.6)
+!
+      do IFirst = 1,N,NColumns
+        ILast = MIN(IFirst+NColumns-1,N)
+        Write(IOut,2000) (i,i=IFirst,ILast)
+        do i=1,M
+          Write(IOut,2010)i,(Matrix(i,j),j=IFirst,ILast)
+        endDo
+      endDo
+
+      Return
+      End Subroutine Print_Matrix_Full_Real
