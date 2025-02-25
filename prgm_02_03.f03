@@ -13,8 +13,8 @@
 !
       Implicit None
       Integer::IIn=10,IError,NDim,i,j
-      Real,Dimension(:),Allocatable::Array_Input,EVals,Temp_Vector
-      Real,Dimension(:,:),Allocatable::Matrix,EVecs,Temp_Matrix
+      Double Precision,Dimension(:),Allocatable::Array_Input,EVals,Temp_Vector
+      Double Precision,Dimension(:,:),Allocatable::Matrix,EVecs,Temp_Matrix
       Character(Len=256)::FileName
 !
 !     Begin by reading the input file name from the command line. Then,
@@ -46,10 +46,10 @@
       Write(*,*)' The matrix loaded (column) lower-triangle packed:'
       Call SymmetricPacked2Matrix_LowerPac(NDim,Array_Input,Matrix)
       Call Print_Matrix_Full_Real(Matrix,NDim,NDim)
-      Call SSPEV('V','L',NDim,Array_Input,EVals,EVecs,NDim,  &
+      Call DSPEV('V','L',NDim,Array_Input,EVals,EVecs,NDim,  &
         Temp_Vector,IError)
       If(IError.ne.0) then
-        Write(*,*)' Failure in SSPEV.'
+        Write(*,*)' Failure in DSPEV.'
         STOP
       endIf
       Write(*,*)' EVals:'
@@ -68,8 +68,8 @@
 !
       Implicit None
       Integer,Intent(In)::N
-      Real,Dimension((N*(N+1))/2),Intent(In)::ArrayIn
-      Real,Dimension(N,N),Intent(Out)::AMatOut
+      Double Precision,Dimension((N*(N+1))/2),Intent(In)::ArrayIn
+      Double Precision,Dimension(N,N),Intent(Out)::AMatOut
 !
       Integer::i,j,k
 !
@@ -95,7 +95,7 @@
 !
       Implicit None
       Integer,Intent(In)::M,N
-      Real,Dimension(M,N),Intent(In)::AMat
+      Double Precision,Dimension(M,N),Intent(In)::AMat
 !
 !     Local variables.
       integer,parameter::IOut=6,NColumns=5
