@@ -71,16 +71,7 @@
 !
 !
 ! *************************************************************************
-
-      k = 1
-      do i=1,N
-        do j=i,N
-          AMatOut(j,i) = ArrayIn(k)
-          AMatOut(i,j) = AMatOut(j,i)
-          k = k + 1
-        endDo
-      endDo
-! WRITE CODE HERE TO READ THE ARRAY ELEMENTS FROM THE INPUT FILE.
+! WRITE CODE HERE TO UNPACK ARRYIN INTO AMATOUT.
 ! *************************************************************************
 !
 !
@@ -107,16 +98,7 @@
 !
 !
 ! *************************************************************************
-      
-      k = 1
-      do i=1,N
-        do j=1,i
-          AMatOut(j,i) = ArrayIn(k)
-          AMatOut(i,j) = AMatOut(j,i)
-          k = k + 1
-        endDo
-      endDo
-! WRITE CODE HERE TO READ THE ARRAY ELEMENTS FROM THE INPUT FILE.
+! WRITE CODE HERE TO UNPACK ARRYIN INTO AMATOUT.
 ! *************************************************************************
 !
 !
