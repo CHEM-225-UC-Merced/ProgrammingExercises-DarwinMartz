@@ -16,3 +16,4 @@ are awarded for each program (60 total points possible) that successfully
 compiles and can be executed. 10 points are awarded for successful and
 correct outputs for each program (30 total points possible).
 
+There's roundoff error in some of the results for tests 3 and 4. 
