@@ -30,9 +30,13 @@
       Allocate(Array_Input(NDim*NDim),Matrix(NDim,NDim))
 !
 ! *************************************************************************
+!
+      do i=1,NDim*NDim
+            Read(IIn,*) Array_Input(i)
+          endDo
+!
 ! WRITE CODE HERE TO READ THE ARRAY ELEMENTS FROM THE INPUT FILE.
 ! *************************************************************************
-!
 !
 !     Convert Array_Input to Matrix and print the matrix.
 !
@@ -67,6 +71,14 @@
 !
 !
 ! *************************************************************************
+
+      k = 0
+      do j=1,N
+        do i=1,M
+          k = k + 1
+          AMatOut(i,j) = ArrayIn(k)
+        endDo
+      endDo
 ! WRITE CODE HERE TO READ THE ARRAY ELEMENTS FROM THE INPUT FILE.
 ! *************************************************************************
 !
@@ -94,9 +106,50 @@
 !
 !
 ! *************************************************************************
+      
+      k = 0
+      do i=1,M
+        do j=1,N
+          k = k + 1
+          AMatOut(i,j) = ArrayIn(k)
+        endDo
+      endDo
 ! WRITE CODE HERE TO READ THE ARRAY ELEMENTS FROM THE INPUT FILE.
 ! *************************************************************************
 !
 !
       Return
       End Subroutine Packed2Matrix_RowWise
+!
+      Subroutine Print_Matrix_Full_Real(AMat,M,N)
+!
+!     This subroutine prints the M-by-N matrix AMat in a full format.
+!     The matrix is printed in a row-wise format.
+!   
+!     Variables Declarations
+!     ======================
+      Implicit None
+      Integer,Intent(In)::M,N
+      Real,Dimension(M,N),Intent(In)::AMat
+!
+!     Local Variables
+!     ===============
+      Integer::IOut,NColumns
+      Parameter (IOut=6,NColumns=5)
+      Integer::i,j,IFirst,Ilast
+!
+ 1000 Format(1x,A)     
+ 2000 Format(5x,5(7x,I7))
+ 2010 Format(1x,I7,5F14.6)
+!
+      Do IFirst=1,M,NColumns
+        ILast = MIN(IFirst+NColumns-1,N)
+        Write(IOut,2000) (i,i=IFirst,ILast)
+        Do i= 1,M
+          Write(IOut,2010)i,(AMat(i,j),j=IFirst,ILast)
+        EndDo
+      EndDo
+!
+      Return
+      End Subroutine Print_Matrix_Full_Real
+      
